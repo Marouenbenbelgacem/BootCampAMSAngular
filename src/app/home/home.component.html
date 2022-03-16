@@ -1,0 +1,22 @@
+<p>home works!</p>
+
+<h1>this sis a Home Component</h1>
+<h3>list des etudiants</h3>
+
+<ul>
+  <li *ngFor="let e of etudiants ">{{e}}</li>
+</ul>
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>Id User</th>
+    <th>Id Post</th>
+    <th>Title</th>
+    <th>Body</th>
+  </tr>
+  <tr *ngFor="let post of myPosts">
+    <td>{{post.userId}}</td>
+    <td>{{post.id}}</td>
+    <td>{{post.title}}</td>
+    <td>{{post.body}}</td>
+  </tr>
+</table>

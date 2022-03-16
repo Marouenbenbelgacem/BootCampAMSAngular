@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'amss';
+
+  formateur :string ="Amine";
+  bootcamp:string[]=["spring", "agile","git"];
+  prix:number=450;
+  ishybride:boolean=true;
 }
