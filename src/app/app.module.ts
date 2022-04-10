@@ -12,6 +12,8 @@ import { UpdateProviderComponent } from './update-provider/update-provider.compo
 import { FormsModule }   from '@angular/forms';
 import { DialogConfirmationComponent } from './dialog-confirmation/dialog-confirmation.component';
 import {RouterModule} from "@angular/router";
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {RouterModule} from "@angular/router";
     ListProviderComponent,
     AddProviderComponent,
     UpdateProviderComponent,
-    DialogConfirmationComponent
+    DialogConfirmationComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

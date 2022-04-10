@@ -1,3 +1,7 @@
 export const environment = {
-  production: true
+  production: true,
+
+  providerUrl : 'https://bootcammars.herokuapp.com/providers'
 };
+
+
