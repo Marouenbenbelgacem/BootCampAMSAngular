@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {Provider} from "../model/provider.model";
 
 @Injectable({
   providedIn: 'root'
@@ -9,43 +8,63 @@ import {Provider} from "../model/provider.model";
 export class ProviderService {
 
   provider: any;
+  username = sessionStorage.getItem('username');
+  password = sessionStorage.getItem('password');
   providerUrl = environment.providerUrl;
 
   constructor(private http: HttpClient) {
   }
 
-  listProviders() {
+  listProviders() :any {
 
-    return this.http.get<Provider[]>(this.providerUrl + '/list');
+    // cette partie est concernant le basic auth logic its is hard coded
+    /*const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(this.username + ':' + this.password)});
+    return this.http.get(this.providerUrl + '/list', {headers}); */
 
-  }
-
-  createProvider(myform:any){
-  this.provider ={
-
-    'name':myform.value.providerName,
-    'email':myform.value.providerEmail,
-    'address':myform.value.providerAddress
-
-  };
-  return this.http.post(this.providerUrl +'/add', this.provider);
-
+    // cette partie est utlise par l'intercepteur
+    return this.http.get(this.providerUrl + '/list');
+    //return this.http.get<Provider[]>(this.providerUrl + '/list');
 
   }
 
-  updateProvider(myObj:any){
+  createProvider(myform: any) {
+
+    //const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(this.username + ':' + this.password)});
+
+    this.provider = {
+
+      'name': myform.value.providerName,
+      'email': myform.value.providerEmail,
+      'address': myform.value.providerAddress
+
+    };
+    //return this.http.post(this.providerUrl + '/add', this.provider, {headers});
+    return this.http.post(this.providerUrl + '/add', this.provider);
+
+  }
+
+  updateProvider(myObj: any) {
+
+    //const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(this.username + ':' + this.password)});
+
+    //return this.http.put(this.providerUrl + '/' + myObj['id'], myObj, {headers})
 
     return this.http.put(this.providerUrl + '/' + myObj['id'], myObj)
-
   }
 
-  deletePovider(id:number){
+  deletePovider(id: number) {
+   // const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(this.username + ':' + this.password)});
+    //return this.http.delete(this.providerUrl + '/' + id,{headers})
+
     return this.http.delete(this.providerUrl + '/' + id)
+
   }
 
-  getProvider(id:number):any {
-
+  getProvider(id: number): any {
+   // const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(this.username + ':' + this.password)});
+    //return this.http.get(this.providerUrl + '/' + id, {headers})
     return this.http.get(this.providerUrl + '/' + id)
+
 
   }
 

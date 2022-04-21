@@ -4,7 +4,8 @@
     <div class="navbar-nav"><a class="nav-item nav-link" routerLink="/listProvider"
                                *ngIf="loginService.isUserLoggedIn()" routerLinkActive="active">Liste</a>
       <a class="nav-item nav-link" routerLink="/addProvider" *ngIf="loginService.isUserLoggedIn()"
-         routerLinkActive="active">Ajouter</a></div>
+         routerLinkActive="active">Ajouter</a>
+    </div>
   </div>
   <a class="nav-item nav-link" routerLink="/login" *ngIf="!loginService.isUserLoggedIn()" routerLinkActive="active">Login</a>
   <a class="nav-item nav-link" routerLink="/logout" *ngIf="loginService.isUserLoggedIn()" routerLinkActive="active">LogOut</a>

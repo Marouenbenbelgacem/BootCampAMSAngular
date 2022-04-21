@@ -1,0 +1,7 @@
+{
+  "/providers/*": {
+    "target": "http://localhost:86",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopicPipe } from './pipes/topic.pipe';
 import { HomeComponent } from './home/home.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { NavbarComponent } from './navbar/navbar.component';
 import { ListProviderComponent } from './list-provider/list-provider.component';
 import { AddProviderComponent } from './add-provider/add-provider.component';
@@ -14,6 +14,7 @@ import { DialogConfirmationComponent } from './dialog-confirmation/dialog-confir
 import {RouterModule} from "@angular/router";
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { BasicAuthHttpIntercepterService } from './basic-auth-http-intercepter.service';
 
 
 @NgModule({
@@ -36,7 +37,11 @@ import { LogoutComponent } from './logout/logout.component';
     FormsModule,
     RouterModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: BasicAuthHttpIntercepterService,
+    multi: true } ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
